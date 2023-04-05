@@ -1,1 +1,1 @@
-# techopark_web
+запуск: templates/index.html
