@@ -1,0 +1,39 @@
+{% load static %}
+<div class="form-group">
+      <div class="row">
+          <div class="question">
+              <div class="row">
+                  <div class="col-3">
+                      <div class="question-avatar">
+                          <img src="{% static "img/sasha_kyzn.jpg" %}" alt="avatar">
+                      </div>
+                      <div class="input-group input-group-sm value-box">
+                          <div class="input-group-prepend">
+                              <button class="btn btn-outline-secondary" style="width: 10px;" type="button"><i
+                                      class="fas fa-angle-left">-</i></button>
+                          </div>
+                          <input type="text" class="form-control text-center" value="1" aria-label="Small"
+                                 aria-describedby="inputGroup-sizing-sm">
+                          <div class="input-group-append">
+                              <button class="btn btn-outline-secondary" style="width: 10px;" type="button"><i
+                                      class="fas fa-angle-right">+</i></button>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-9">
+                      <h2><a href="{% url 'question' object.id %}">{{ object.title }}</a></h2>
+                      <div class="question-text">{{ object.text }}</div>
+                      <div class="row">
+                          <div class="col-4" >
+                              Answers (3)
+                          </div>
+                          <div class="col-8">
+                              Tags: <a href="bender.html">first_link</a>, <a href="bender.html">second_link</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              </div>
+          </div>
+
+  </div>

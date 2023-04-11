@@ -1,0 +1,32 @@
+{% extends "inc/base.html" %}
+
+{% block content %}
+        <div class=" first-text mt-2">
+            <h1 class="mt-5" style="margin-bottom: 100px;">Settings: Higgers</h1>
+            <!--            <a class="mt-5">Hot question</a>-->
+        </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <form>
+        <div class="form-group">
+          <label for="login">Login</label>
+          <input type="text" class="form-control" id="login" placeholder="Enter your login">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter your email">
+        </div>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" placeholder="Enter your name">
+        </div>
+        <div class="form-group avatar-text">
+          <label for="avatar">Upload Avatar</label>
+          <input type="file" class="form-control-file" id="avatar">
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </form>
+    </div>
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% extends "inc/base.html" %}
+
+{% block content %}
+
+        <div class="first-text mt-2">
+            <h1 class="mt-5">New question</h1>
+            <a class="mt-5" href="question.html">Hot question</a>
+        </div>
+
+        <div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <form>
+    {% for object in objects %}
+        {% include "inc/question_item.html" %}
+    {% endfor %}
+      </form>
+        {% include "inc/pagination.html" %}
+    </div>
+
+{% endblock content %}
