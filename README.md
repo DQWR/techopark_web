@@ -1,2 +1,1 @@
-Гуков Леонид Александрович
-  WEB 12
+запуск: python manage.py runserver
