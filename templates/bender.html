@@ -1,0 +1,18 @@
+{% extends "inc/base.html" %}
+
+{% block content %}
+
+        <div class=" first-text mt-2">
+            <h1 class="mt-5">Tag: question</h1>
+        </div>
+
+        <div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <form>
+    {% for question in questions %}
+        {% include "inc/question_item.html" %}
+    {% endfor %}
+      </form>
+    </div>
+{% endblock content %}

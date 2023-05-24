@@ -1,0 +1,47 @@
+{% load static %}
+<div class="form-group">
+      <div class="row">
+          <div class="question">
+              <div class="row">
+                  <div class="col-3">
+                      <div class="question-avatar">
+                          <img src="{% static "img/sasha_kyzn.jpg" %}" alt="avatar">
+                      </div>
+                      <div class="input-group input-group-sm value-box">
+    <div class="input-group-prepend">
+        <button class="btn btn-outline-secondary" style="width: 10px;" type="button"><i
+                class="fas fa-angle-left">-</i></button>
+    </div>
+
+    <input type="text" class="form-control text-center" value="{{ random_user }}"
+        aria-describedby="inputGroup-sizing-sm" width="50">
+    <div class="input-group-append">
+        <button class="btn btn-outline-secondary" style="width: 10px;" type="button"><i
+                class="fas fa-angle-right">+</i></button>
+    </div>
+</div>
+                  </div>
+                  <div class="col-9">
+                      <h2><a href="{% url 'question' object.id %}">{{ object.title }}</a></h2>
+                      <div class="question-text">{{ object.text }}</div>
+                      <div class="row">
+                          <div class="col-4" >
+                              {% if random_answer %}
+                              {{ random_answer }}
+                              {% else %}
+                              No answers available.
+                              {% endif %}
+                          </div>
+                          <div class="col-8">
+                              Tags:
+                              {% for tag in random_tags %}
+                              <a href="{% url 'bender' %}">{{ tag.name }}</a>,
+                              {% endfor %}
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              </div>
+          </div>
+
+  </div>
