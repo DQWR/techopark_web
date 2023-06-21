@@ -1,0 +1,59 @@
+{% load static %}
+
+<div class="form-group">
+    <div class="row">
+        <div class="question">
+            <div class="row">
+                <div class="col-3">
+                    <div class="question-avatar">
+                        <img src="{% static "img/sasha_kyzn.jpg" %}" alt="avatar">
+                    </div>
+                    <div class="input-group input-group-sm value-box">
+                        <div class="input-group-prepend">
+                            <button class="btn btn-outline-secondary" style="width: 10px;" type="submit" name="action" value="like" form="like-form-{{ question.id }}">
+                                <i class="fas fa-thumbs-up"></i>
+                            </button>
+                        </div>
+                        <input type="text" class="form-control text-center" value="{{ question.likes_count }}"
+                            aria-describedby="inputGroup-sizing-sm" width="50" readonly>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" style="width: 10px;" type="submit" name="action" value="dislike" form="dislike-form-{{ question.id }}">
+                                <i class="fas fa-thumbs-down"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-9">
+                    <h2><a href="{% url 'question' question.id %}">{{ question.title }}</a></h2>
+                    <div class="question-text">{{ question.body }}</div>
+                    <p>Likes: {{ question.likes_count }}</p>
+                    <div class="row">
+                        <div class="col-4">
+    {% for answer in question.answers.all %}
+        <div>{{ answer.body }}</div>
+    {% empty %}
+        <div>Нет доступных ответов.</div>
+    {% endfor %}
+</div>
+                        <div class="col-8">
+                            Теги:
+                            {% for tag in question.tags.all %}
+                            <a href="{% url 'tagged_questions' tag_id=tag.id %}">{{ tag.name }}</a>,
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form id="like-form-{{ question.id }}" method="post" action="{% url 'like_question' %}">
+    {% csrf_token %}
+    <input type="hidden" name="question_id" value="{{ question.id }}">
+</form>
+
+<form id="dislike-form-{{ question.id }}" method="post" action="{% url 'dislike_question' %}">
+    {% csrf_token %}
+    <input type="hidden" name="question_id" value="{{ question.id }}">
+</form>

@@ -1,0 +1,134 @@
+main > .container{
+    padding: 60px 15px 0;
+    font-family: 'Montserrat', sans-serif;
+}
+main{
+        background-color: #e5e0e0;
+    /*margin-bottom: 50px;*/
+}
+.navbar{
+    background-color: #d0d0f6;
+}
+.logo{
+    margin-left: 100px;
+}
+hr{
+    margin-top: 40px;
+    height: 2px;
+    border: 1px solid black;
+}
+.question-first{
+    /*display: block;*/
+    margin-top: 20px;
+    background-color: white;
+    height: 200px;
+    /*border: 2px solid black;*/
+    border-radius: 20px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.question {
+    display: block;
+    background-color: white;
+    height: 200px;
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 10px;
+    margin-bottom: 10px;
+
+}
+.card{
+    margin-left: 100px;
+    margin-top: 20px;
+}
+.card{
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+.avatar-text{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.form-control{
+    width: 800px;
+}
+.btn-primary{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    /*width: 50px;*/
+}
+.value-box-2{
+    /*display: inline-block;*/
+    /*margin-top: 20px;*/
+    /*width: 80px;*/
+}
+.value-box{
+    margin-top: 20px;
+    width: 80px;
+}
+.btn-box{
+    /*width: 80px;*/
+}
+
+.first-text{
+     display: flex;
+        /*justify-content: space-between;*/
+    align-items: center;
+
+}
+.first-text a{
+    margin-left: 100px;
+}
+.question-avatar{
+    height: 80px;
+    width: 80px;
+}
+.question-avatar > img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.question-text{
+    margin-bottom: 10px;
+}
+.tags-text{
+    font-size:25px;
+}
+.popular-tags{
+    display: block;
+    width: 200px;
+    height: 200px;
+    font-size: 17px;
+    font-weight: bold;
+    /*text-align: center;*/
+    padding: 17px 17px;
+    margin-left: 60px;
+    border-radius: 50px;
+    color:white;
+    background:black;
+    filter: drop-shadow(0px 4px 35px rgba(48, 42, 118, 0.44));
+    text-align: center;
+
+
+}
+.popular-tags h1{
+    font-size: 20px;
+}
+.popular-tags ul{
+    list-style: none;
+}
+.btn-nvbr{
+    margin-left: 200px;
+}
+.pagi{
+    margin-top: 30px;
+    margin-bottom: 30px
+}
+/*footer{*/
+/*    position: absolute;*/
+/*    bottom: 0;*/
+/*    width: 100%;*/
+/*    height: 150px;*/
+
+/*}*/

@@ -1,0 +1,12 @@
+{% extends "inc/base.html" %}
+
+{% block content %}
+    <h1>Tag: {{ tag.name }}</h1>
+    {% for question in page_obj %}
+    {% include "inc/question_item.html" with question=question %}
+{% empty %}
+    <div>Нет доступных вопросов с данным тегом.</div>
+{% endfor %}
+
+    {% include "inc/pagination.html" %}
+{% endblock %}

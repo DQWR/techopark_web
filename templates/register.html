@@ -1,0 +1,89 @@
+{% load static %}
+{% load django_bootstrap5 %}
+<!doctype html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="utf-8">
+    <title>Sticky Footer Navbar Template · Bootstrap v5.3</title>
+    <link href="../static/css/bootstrap.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;900&display=swap" rel="stylesheet">
+    <!--Жирный шрифт-->
+
+
+    <!-- Custom styles for this template -->
+    <link href="../static/css/my.css" rel="stylesheet">
+</head>
+<body class="d-flex flex-column h-100">
+
+<header class="back-nav navbar navbar-expand-lg">
+    <a class="navbar-brand logo" href="#">Talk to Talk</a>
+
+    <form class="form-inline my-2 my-lg-0 mx-auto">
+        <div class="input-group">
+            <input class="form-control mr-sm-2" type="search" placeholder="Поиск" aria-label="Поиск">
+            <div class="input-group-append" style="margin-left: 20px">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><a
+                        style="text-decoration: none; color: white" href="{% url 'ask' %}">ASK</a></button>
+            </div>
+        </div>
+    </form>
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'register' %}">Зарегестрироваться</a>
+        </li>
+    </ul>
+</header>
+        <div class=" first-text mt-2" style="margin-bottom: 50px;">
+            <h1 class="mt-5">Registration</h1>
+                </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+       <form method="post" enctype="multipart/form-data">
+           {% if messages %}
+    <div class="alert alert-danger">
+        <ul class="mb-0">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Sign Up</button>
+        </form>
+    </div>
+
+</div>
+</div>
+
+</main>
+
+<footer class="bg-light py-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <p class="mb-0">Copyright © 2023
+                    <a href="#" class="text-dark font-weight-bold">$$</a>
+                    All rights reserved.</p>
+            </div>
+            <div class="col-12 col-md-6 mt-3 mt-md-0 text-md-right">
+                <a href="#" class="btn btn-outline-primary btn-sm mr-2">
+                    <i class="fab fa-facebook fa-fw"></i> Facebook
+                </a>
+                <a href="#" class="btn btn-outline-info btn-sm mr-2">
+                    <i class="fab fa-twitter fa-fw"></i> Twitter
+                </a>
+                <a href="#" class="btn btn-outline-secondary btn-sm mr-2">
+                    <i class="fab fa-instagram fa-fw"></i> Instagram
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="../static/js/bootstrap.js"
+        crossorigin="anonymous"></script>
+</body>
+</html>
+

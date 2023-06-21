@@ -1,0 +1,38 @@
+{% extends "inc/base.html" %}
+
+{% block content %}
+    <div class="first-text mt-2">
+        <h1 class="mt-5" style="margin-bottom: 100px;">Settings: Higgers</h1>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+
+        <!-- Поле для изменения имени -->
+        {{ form.nickname.label_tag }}
+        {{ form.nickname }}
+        {{ form.nickname.errors }}
+
+        <!-- Поле для изменения фотографии -->
+        {{ form.photo.label_tag }}
+        {{ form.photo }}
+        {{ form.photo.errors }}
+
+        <!-- Поле для изменения пароля -->
+        {{ password_form.new_password1.label_tag }}
+        {{ password_form.new_password1 }}
+        {{ password_form.new_password1.errors }}
+
+        {{ password_form.new_password2.label_tag }}
+        {{ password_form.new_password2 }}
+        {{ password_form.new_password2.errors }}
+
+        <button type="submit">Save</button>
+    </form>
+</div>
+        </div>
+    </div>
+{% endblock content %}

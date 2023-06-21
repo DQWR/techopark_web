@@ -1,0 +1,23 @@
+{% extends "inc/base.html" %}
+
+{% block content %}
+
+<div class="first-text mt-2">
+    <h1 class="mt-5">New question</h1>
+    <a class="mt-5" href="{% url 'best_questions' %}">Hot question</a>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <form>
+                {% for question in page_obj %}
+                    {% include "inc/question_item.html" with likes_count=question.likes_count_annotated %}
+                {% endfor %}
+            </form>
+            {% include "inc/pagination.html" %}
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

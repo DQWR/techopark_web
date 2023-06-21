@@ -1,0 +1,131 @@
+{% extends "inc/base.html" %}
+{% load static %}
+{% block content %}
+    <div class="form-group">
+        <div class="row">
+            <div class="question">
+                <div class="row">
+                    <div class="col-3">
+                        <div class="question-avatar">
+                            {% if answer.user.avatar %}
+            <img src="{{ answer.user.avatar.url }}" alt="avatar">
+        {% else %}
+            <img src="{% static "img/sasha_kyzn.jpg" %}" alt="avatar">
+        {% endif %}
+                        </div>
+                        <div class="input-group input-group-sm value-box">
+                        <div class="input-group-prepend">
+                            <button class="btn btn-outline-secondary" style="width: 10px;" type="submit" name="action" value="like" form="like-form-{{ question.id }}">
+                                <i class="fas fa-thumbs-up"></i>
+                            </button>
+                        </div>
+                        <input type="text" class="form-control text-center" value="{{ question.likes_count }}"
+                            aria-describedby="inputGroup-sizing-sm" width="50" readonly>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" style="width: 10px;" type="submit" name="action" value="dislike" form="dislike-form-{{ question.id }}">
+                                <i class="fas fa-thumbs-down"></i>
+                            </button>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-9">
+                        <h2>{{ question.title }}</h2>
+                        <div class="question-text">{{ question.body }}</div>
+                        <div class="row">
+                            <div class="col-8">
+                                Tags:
+                                {% for tag in question.tags.all %}
+                                <a href="{% url 'tagged_questions' tag_id=tag.id %}">{{ tag.name }}</a>,
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr style="margin-top: 15px;">
+{% for answer in page_obj %}
+        <form id="like-form-answer-{{ answer.id }}" method="post" action="{% url 'like_answer' %}">
+            {% csrf_token %}
+            <input type="hidden" name="answer_id" value="{{ answer.id }}">
+            <input type="hidden" name="page" value="{{ page_obj.number }}">
+        </form>
+
+        <form id="dislike-form-answer-{{ answer.id }}" method="post" action="{% url 'dislike_answer' %}">
+            {% csrf_token %}
+            <input type="hidden" name="answer_id" value="{{ answer.id }}">
+            <input type="hidden" name="page" value="{{ page_obj.number }}">
+        </form>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="question">
+                    <div class="row">
+                        <div class="col-3">
+                            <div class="question-avatar">
+                                <img src="{% static "img/sasha_kyzn.jpg" %}" alt="avatar">
+                            </div>
+                            <div class="input-group input-group-sm value-box">
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-outline-secondary" style="width: 10px;" type="submit" name="action" value="like" form="like-form-answer-{{ answer.id }}">
+                                        <i class="fas fa-thumbs-up"></i>
+                                    </button>
+                                </div>
+                                <input type="text" class="form-control text-center" value="{{ answer.likes_count }}"
+                                    aria-describedby="inputGroup-sizing-sm" width="50" readonly>
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" style="width: 10px;" type="submit" name="action" value="dislike" form="dislike-form-answer-{{ answer.id }}">
+                                        <i class="fas fa-thumbs-down"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-9">
+                            <h2>{{ answer.user.username }}</h2>
+                            <div class="row">
+                                <div class="col-4">
+                                    {{ answer.body }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+    <hr style="margin-top: 10px;">
+
+<div class="form-group">
+    <div class="row">
+        <label for="text" style="margin-bottom: 10px;">Enter your answer</label>
+        <form id="add-answer-form" method="post" action="{% url 'add_answer' %}?page={{ page_obj.number }}">
+            {% csrf_token %}
+            <input type="hidden" name="question_id" value="{{ question.id }}">
+            <textarea type="text" class="form-control" style="height: 200px; margin-bottom:20px;" id="text" name="text" placeholder="Enter your answer"></textarea>
+            {% if messages %}
+                <div class="alert alert-danger" role="alert">
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+</div>
+
+
+  <form id="like-form-{{ question.id }}" method="post" action="{% url 'like_question' %}">
+        {% csrf_token %}
+        <input type="hidden" name="answer_id" value="{{ answer.id }}">
+    </form>
+
+    <form id="dislike-form-{{ question.id }}" method="post" action="{% url 'dislike_question' %}">
+        {% csrf_token %}
+        <input type="hidden" name="answer_id" value="{{ answer.id }}">
+    </form>
+{% include "inc/pagination.html" %}
+{% endblock content %}
+
